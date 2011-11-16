@@ -1,0 +1,16 @@
+defaults: &defaults
+  allow_dynamic_fields: false
+
+development:
+  <<: *defaults
+  database: localeze
+  host: localhost
+
+test:
+  <<: *defaults
+  database: localeze_test
+  host: localhost
+
+production:
+  <<: *defaults
+  uri: <%= ENV['MONGOHQ_URL'] %>
