@@ -1,5 +1,5 @@
 defaults: &defaults
-  allow_dynamic_fields: false
+  allow_dynamic_fields: true
 
 development:
   <<: *defaults
