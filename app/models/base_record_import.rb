@@ -1,6 +1,8 @@
 class BaseRecordImport < LocalezeImport
+  PRIMARY_KEY = [:pid]
+
   def process_row
-    m = BaseRecord.first(:conditions => {:pid => row_map[:pid]}) || create_from_row(BaseRecord)
+    m = BaseRecord.first(:conditions => CONDITIONS) || create_from_row(BaseRecord)
     m.save
   end
 

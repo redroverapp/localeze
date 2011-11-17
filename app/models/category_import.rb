@@ -1,6 +1,8 @@
 class CategoryImport < LocalezeImport
+  PRIMARY_KEY = [:pid]
+
   def process_row
-    m = Category.first(:conditions => {:categoryid => row_map[:categoryid]}) || create_from_row(Category)
+    m = Category.first(:conditions => CONDITIONS) || create_from_row(Category)
     m.save
   end
 

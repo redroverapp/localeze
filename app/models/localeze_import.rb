@@ -2,20 +2,20 @@ class LocalezeImport < ScaffoldLogic::DataImport
   MODELS_TO_FILES = {
     BaseRecordImport => 'baserecords.txt',
     CategoryImport => 'categories.txt'
-#     Chain => 'chains.txt',
-#     CompanyAttribute => 'companyattributes.txt',
-#     CompanyHeading => 'companyheadings.txt',
-#     CompanyPaymentType => 'companypaymenttypes.txt',
-#     CompanyPhone => 'companyphones.txt',
-#     CompanySic => 'companysic.txt',
-#     CompanyUnstructured => 'companyunstructured.txt',
-#     CondensedHeadingDetail => 'condensedheadingdetail.txt',
-#     CustomAttribute => 'customattributes.txt',
-#     CustomAttributeType => 'customattributetypes.txt',
-#     Language => 'languages.txt',
-#     NormalizedHeadingDetail => 'normalizedheadingdetail.txt',
-#     PaymentType => 'paymenttypes.txt',
-#     SicDetail => 'sicdetail.txt'
+    Chain => 'chains.txt',
+    CompanyAttribute => 'companyattributes.txt',
+    CompanyHeading => 'companyheadings.txt',
+    CompanyPaymentType => 'companypaymenttypes.txt',
+    CompanyPhone => 'companyphones.txt',
+    CompanySic => 'companysic.txt',
+    CompanyUnstructured => 'companyunstructured.txt',
+    CondensedHeadingDetail => 'condensedheadingdetail.txt',
+    CustomAttribute => 'customattributes.txt',
+    CustomAttributeType => 'customattributetypes.txt',
+    Language => 'languages.txt',
+    NormalizedHeadingDetail => 'normalizedheadingdetail.txt',
+    PaymentType => 'paymenttypes.txt',
+    SicDetail => 'sicdetail.txt'
   }.freeze
 
   def self.import dir
