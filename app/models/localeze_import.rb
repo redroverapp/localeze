@@ -9,7 +9,7 @@ class LocalezeImport < ScaffoldLogic::DataImport
       :fields => [:categoryid, :categoryname],
       :filename => 'categories.txt',
       :primary_keys => [:categoryid]
-    }
+    },
     Chain => {
       :fields => [:chainid, :stdname],
       :filename => 'chains.txt',
@@ -62,7 +62,7 @@ class LocalezeImport < ScaffoldLogic::DataImport
     },
     CustomAttributeType => {
       :fields => [:attributetypeid, :attributetype],
-      :filename => 'customattributetypes.txt',
+      :filename => 'customattributestypes.txt',
       :primary_keys => [:attributetypeid]
     },
     Language => {
@@ -87,12 +87,16 @@ class LocalezeImport < ScaffoldLogic::DataImport
     }
   }.freeze
 
-  def self.escape_quotes path
-    File.open(path, 'w') {|file| file.puts File.read(path).gsub(/"/, %{&quot;})}
+  def self.pre_process dir, model
+    path = "db/#{dir}/Sample/#{MODEL_ATTRIBUTES[model][:filename]}"
+    puts "Reading #{path}"
+    tmp_path = "tmp/#{MODEL_ATTRIBUTES[model][:filename]}"
+    File.open(tmp_path, 'w') {|f| f.puts File.read(path).gsub(/"/, %{&quot;})}
+    tmp_path
   end
 
   def self.import dir
-    MODEL_ATTRIBUTES.inject({}) do |h, (model, keys)|
+    MODEL_ATTRIBUTES.keys.sort_by{ |m| m.to_s }.inject({}) do |h, model|
       self.import_model dir, model
       h[model] = model.count
       h
@@ -108,17 +112,14 @@ class LocalezeImport < ScaffoldLogic::DataImport
 
   # Overrides initializer to use parameters from MODEL_ATTRIBUTES.
   def initialize dir, model
-    path = "db/#{dir}/Sample/#{MODEL_ATTRIBUTES[model][:filename]}"
-    puts "Reading #{path}"
-    return unless File.size? path
-    LocalezeImport.escape_quotes path
+    @file = LocalezeImport.pre_process dir, model
     @fields = MODEL_ATTRIBUTES[model][:fields]
-    @file = path
     @model = model
   end
 
   # Overrides row index, column separator, and row initialization.
   def run
+    return unless File.size?(@file) > 5
     @errors = []
     @row_index = 0
 
@@ -134,7 +135,13 @@ class LocalezeImport < ScaffoldLogic::DataImport
 
   # Instance Methods ===============================================================================
   def process_row
-    model = @model.first( :conditions => MODEL_ATTRIBUTES[@model][:primary_keys].inject({}){|h, pk| h[pk] = row_map[pk.to_s]} ) || create_from_row(@model)
+    model = @model.first( :conditions => primary_key_conditions ) || create_from_row(@model)
     model.save
+  end
+
+  private
+
+  def primary_key_conditions
+    MODEL_ATTRIBUTES[@model][:primary_keys].inject({}){ |h, pk| h[pk] = row_map[pk.to_s]; h }
   end
 end
