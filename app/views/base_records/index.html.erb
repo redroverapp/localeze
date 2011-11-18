@@ -7,7 +7,7 @@
   </tr>
 <%- else -%>
   <tr>
-  <%- @fields.each do |field| -%>
+  <%- @base_record_fields.each do |field| -%>
     <th><%= sort_link('base_records', field.to_s, params) -%></th>
   <%- end -%>
     <th> </th>
@@ -15,7 +15,7 @@
 
   <%- @base_records.each do |base_record| -%>
   <tr class="<%= cycle('odd', 'even') -%>">
-  <%- @fields.each do |field| -%>
+  <%- @base_record_fields.each do |field| -%>
     <td><%= base_record.send field -%></td>
   <%- end -%>
     <td class="crud_links"><%= crud_links(base_record, [:show]) -%></td>
