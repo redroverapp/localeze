@@ -1,0 +1,25 @@
+<%- @title = 'Base Records' -%>
+
+<table class="standard">
+<%- if @base_records.blank? -%>
+  <tr>
+    <th colspan="3"><em>No base records have been created yet.</em></th>
+  </tr>
+<%- else -%>
+  <tr>
+  <%- @fields.each do |field| -%>
+    <th><%= sort_link('base_records', field.to_s, params) -%></th>
+  <%- end -%>
+    <th> </th>
+  </tr>
+
+  <%- @base_records.each do |base_record| -%>
+  <tr class="<%= cycle('odd', 'even') -%>">
+  <%- @fields.each do |field| -%>
+    <td><%= base_record.send field -%></td>
+  <%- end -%>
+    <td class="crud_links"><%= crud_links(base_record, [:show]) -%></td>
+  </tr>
+  <%- end -%>
+<%- end -%>
+</table>

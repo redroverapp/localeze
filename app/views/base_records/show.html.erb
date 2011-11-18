@@ -1,0 +1,15 @@
+<%- @title = @base_record.businessname -%>
+
+<fieldset class="form_container">
+  <%= legend_tag 'About This Base Record' -%>
+
+<%- LocalezeImport::MODEL_ATTRIBUTES[BaseRecord][:fields].each do |field| -%>
+  <div class="form_column">
+    <%= faux_field field.to_s.titleize, @base_record.send(field) -%>
+  </div>
+<%- end -%>
+</fieldset>
+
+<div class="link_block attached">
+  <%= link_to 'Back', base_records_path, :class => 'link_button' -%>
+</div>
