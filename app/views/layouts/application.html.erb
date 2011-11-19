@@ -11,7 +11,7 @@
       <div id="header">
         <div id="branding"></div>
         <div id="navigation">
-          <ol class="breadcrumbs"><%= admin_breadcrumbs.map{ |text, path| "<li>#{link_to_unless(path.blank?, text, path)}</li>" }.to_s.html_safe -%></ol>
+          <ol class="breadcrumbs"><%= admin_breadcrumbs.map{ |text, path| "<li>#{link_to_unless(path.blank?, text, path)}</li>" }.join.html_safe -%></ol>
           <%- if user_signed_in? -%>
             <ul id="account_links">
               <li><%= current_user.email -%></li>
