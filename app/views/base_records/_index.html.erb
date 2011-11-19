@@ -1,5 +1,3 @@
-<%- @title = 'Base Records' -%>
-
 <table class="standard">
 <%- if @base_record.company_attributes.blank? -%>
   <tr>
@@ -7,14 +5,14 @@
   </tr>
 <%- else -%>
   <tr>
-  <%- @company_attribute_fields.each do |field| -%>
+  <%- LocalezeImport::MODEL_ATTRIBUTES[model][:fields].each do |field| -%>
     <th><%= field.to_s -%></th>
   <%- end -%>
   </tr>
 
-  <%- @base_record.company_attributes.each do |company_attribute| -%>
+  <%- @base_record.send(model.name.tableize).each do |company_attribute| -%>
   <tr class="<%= cycle('odd', 'even') -%>">
-    <%- @company_attribute_fields.each do |field| -%>
+    <%- LocalezeImport::MODEL_ATTRIBUTES[model][:fields].each do |field| -%>
     <td><%= company_attribute.send field -%></td>
     <%- end -%>
   </tr>

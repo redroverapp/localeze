@@ -9,6 +9,5 @@ class BaseRecordsController < ApplicationController
 
   def show
     @base_record = BaseRecord.find params[:id]
-    @company_attribute_fields = LocalezeImport::MODEL_ATTRIBUTES[CompanyAttribute][:fields]
   end
 end

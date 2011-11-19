@@ -1,7 +1,7 @@
 <%- @title = @base_record.businessname -%>
 
 <fieldset class="form_container">
-  <%= legend_tag 'About This Base Record' -%>
+  <%= legend_tag 'About' -%>
 
 <%- LocalezeImport::MODEL_ATTRIBUTES[BaseRecord][:fields].each do |field| -%>
   <div class="form_column">
@@ -16,5 +16,40 @@
 
 <fieldset class="form_container">
   <%= legend_tag 'Company Attributes' -%><br />
-  <%= render :partial => 'company_attributes/index' -%>
+  <%= render :partial => 'index', :locals => {:model => CompanyAttribute} -%>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Company Headings' -%><br />
+  <%= render :partial => 'index', :locals => {:model => CompanyHeading} -%>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Company Languages' -%><br />
+  <%= render :partial => 'index', :locals => {:model => CompanyLanguage} -%>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Company Payment Types' -%><br />
+  <%= render :partial => 'index', :locals => {:model => CompanyPaymentType} -%>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Company Phones' -%><br />
+  <%= render :partial => 'index', :locals => {:model => CompanyPhone} -%>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Company Sics' -%><br />
+  <%= render :partial => 'index', :locals => {:model => CompanySic} -%>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Company unstructureds' -%><br />
+  <%= render :partial => 'index', :locals => {:model => CompanyUnstructured} -%>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Custom Attributes' -%><br />
+  <%= render :partial => 'index', :locals => {:model => CustomAttribute} -%>
 </fieldset>
