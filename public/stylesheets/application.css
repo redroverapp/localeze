@@ -2,7 +2,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 h1, h2, h3, h4, h5, h6{font-size:100%;margin:.67em 0}
 ul{list-style:disc;margin-top:1em}
 ol li, ul li{font-size:.9em;margin-bottom:1em;margin-left:2em}
-address, caption, cite, code, dfn, em, strong, th, var{font-style:normal;font-weight:normal}
+address, caption, cite, code, dfn, th, var{font-style:normal;font-weight:normal}
 table{border-collapse:collapse;border-spacing:0}
 table td{vertical-align:top;padding:.5em}
 fieldset, img{border:0}
@@ -36,7 +36,6 @@ h3{color:#333;font-weight:bold;font-size:1em;margin:1.5em 0em .5em 0em}
 p{margin-bottom:1.5em}
 dt{font-weight:bold;margin:.5em 0em .5em 1em}
 dd{display:block;margin:.5em 0em .5em 1em}
-em{font-weight:bold}
 .indented{margin-left:2em}
 td.indented{padding-left:2em !important}
 ul.indented li{margin-left:1em}
