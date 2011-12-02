@@ -5,7 +5,7 @@ gem 'devise'
 gem 'fastercsv'
 gem 'jquery-rails', '>= 1.0.3'
 gem 'mongoid'
-gem 'rails', '3.0.10'
+gem 'rails'
 gem 'scaffold_logic'
 
 group :test do
