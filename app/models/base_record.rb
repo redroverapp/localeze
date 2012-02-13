@@ -2,6 +2,8 @@ class BaseRecord
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  index :pid
+
   def company_attributes
     CompanyAttribute.where :pid => self.pid
   end

@@ -3,6 +3,7 @@ class BaseRecordsController < ApplicationController
 
   # CRUD ===========================================================================================
   def index
+    params[:by] ||= 'pid'
     @base_records = BaseRecord.order_by ScaffoldLogic.mongoid_sorter_from(params[:by], params[:dir])
     @base_record_fields = LocalezeImport::MODEL_ATTRIBUTES[BaseRecord][:fields][0..15]
   end
