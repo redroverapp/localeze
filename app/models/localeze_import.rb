@@ -88,7 +88,7 @@ class LocalezeImport < ScaffoldLogic::DataImport
   }.freeze
 
   def self.pre_process dir, model
-    path = "db/#{dir}/Sample/#{MODEL_ATTRIBUTES[model][:filename]}"
+    path = "db/#{dir}/#{MODEL_ATTRIBUTES[model][:filename]}"
     puts "Reading #{path}"
     tmp_path = "tmp/#{MODEL_ATTRIBUTES[model][:filename]}"
     File.open(tmp_path, 'w') {|f| f.puts File.read(path).gsub(/"/, %{&quot;})}
