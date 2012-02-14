@@ -3,6 +3,7 @@ class BaseRecord
   include Mongoid::Timestamps
 
   index :pid
+  scope :pid, lambda{ |v| {:where => {:pid => /#{v}/i}} }
 
   def company_attributes
     CompanyAttribute.where :pid => self.pid
